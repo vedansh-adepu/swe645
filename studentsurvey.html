@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Survey Form</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body {
+            font-family: "Raleway", Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], input[type="date"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .w3-input, .w3-select {
+            font-size: 16px;
+        }
+
+        button {
+            width: 100px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .reset-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .reset-btn:hover {
+            background-color: #e53935;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <script>
+        // Allow only numbers in telephone and zip fields
+        function validateNumberInput(event) {
+            const key = event.key;
+            if (!/[0-9]/.test(key)) {
+                event.preventDefault();
+            }
+        }
+
+        // Handle form submission
+        function submitForm(event) {
+            event.preventDefault();
+            alert("Survey Submitted Successfully!");
+            document.getElementById('surveyForm').reset();  // Reset form after submission
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Student Survey Form</h2>
+        
+        <form class="w3-container" id="surveyForm" onsubmit="submitForm(event);">
+            
+            <!-- Personal Information -->
+            <div class="form-section">
+                <h4 class="w3-text-green">Personal Information</h4>
+                <label for="first_name">First Name:</label>
+                <input class="w3-input w3-border" type="text" id="first_name" name="first_name" required>
+                
+                <label for="last_name">Last Name:</label>
+                <input class="w3-input w3-border" type="text" id="last_name" name="last_name" required>
+                
+                <label for="street_address">Street Address:</label>
+                <input class="w3-input w3-border" type="text" id="street_address" name="street_address" required>
+                
+                <label for="city">City:</label>
+                <input class="w3-input w3-border" type="text" id="city" name="city" required>
+                
+                <label for="state">State:</label>
+                <input class="w3-input w3-border" type="text" id="state" name="state" required>
+                
+                <label for="zip">Zip:</label>
+                <input class="w3-input w3-border" type="text" id="zip" name="zip" required onkeypress="validateNumberInput(event)">
+                
+                <label for="phone">Telephone Number:</label>
+                <input class="w3-input w3-border" type="text" id="phone" name="phone" required onkeypress="validateNumberInput(event)">
+                
+                <label for="email">Email:</label>
+                <input class="w3-input w3-border" type="email" id="email" name="email" required>
+                
+                <label for="date_of_survey">Date of Survey:</label>
+                <input class="w3-input w3-border" type="date" id="date_of_survey" name="date_of_survey" required>
+            </div>
+            
+            <!-- Campus Liked Most -->
+            <div class="form-section">
+                <h4 class="w3-text-green">What did you like most about the campus?</h4>
+                <p><input type="checkbox" name="campus_likes" value="students"> Students</p>
+                <p><input type="checkbox" name="campus_likes" value="location"> Location</p>
+                <p><input type="checkbox" name="campus_likes" value="campus"> Campus</p>
+                <p><input type="checkbox" name="campus_likes" value="atmosphere"> Atmosphere</p>
+                <p><input type="checkbox" name="campus_likes" value="dorm_rooms"> Dorm Rooms</p>
+                <p><input type="checkbox" name="campus_likes" value="sports"> Sports</p>
+            </div>
+            
+            <!-- How did you become interested in the university? -->
+            <div class="form-section">
+                <h4 class="w3-text-green">How did you become interested in the university?</h4>
+                <p><input type="radio" name="interest" value="friends" required> Friends</p>
+                <p><input type="radio" name="interest" value="television" required> Television</p>
+                <p><input type="radio" name="interest" value="internet" required> Internet</p>
+                <p><input type="radio" name="interest" value="other" required> Other</p>
+            </div>
+            
+            <!-- Likelihood to Recommend -->
+            <div class="form-section">
+                <h4 class="w3-text-green">Likelihood of Recommending the School</h4>
+                <select class="w3-select w3-border" name="recommendation" required>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="very_likely">Very Likely</option>
+                    <option value="likely">Likely</option>
+                    <option value="unlikely">Unlikely</option>
+                </select>
+            </div>
+            
+            <!-- Raffle -->
+            <div class="form-section">
+                <h4 class="w3-text-green">Raffle Entry</h4>
+                <label for="raffle">Enter at least ten comma-separated numbers (1-100):</label>
+                <input class="w3-input w3-border" type="text" id="raffle" name="raffle" required>
+            </div>
+            
+            <!-- Additional Comments -->
+            <div class="form-section">
+                <h4 class="w3-text-green">Additional Comments</h4>
+                <textarea class="w3-input w3-border" name="comments" rows="5"></textarea>
+            </div>
+            
+            <!-- Submit & Cancel Buttons -->
+            <button class="submit-btn" type="submit">Submit</button>
+            <button class="reset-btn" type="reset">Cancel</button>
+        
+        </form>
+    </div>
+
+</body>
+</html>
