@@ -21,9 +21,8 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                // Manually clone the repository as skipDefaultCheckout() is enabled
+                // Manually clone the repository to the workspace
                 sh 'git clone https://github.com/vedansh-adepu/swe645.git'
-                sh 'cd swe645'
             }
         }
 
@@ -31,7 +30,8 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
-                    sh "docker build -t vedanshadepu99/studentsurvey:latest -f Dockerfile ."
+                    // Specify the Dockerfile in the cloned directory
+                    sh "docker build -t vedanshadepu99/studentsurvey:latest -f swe645/Dockerfile swe645"
                     sh "docker push vedanshadepu99/studentsurvey:latest"
                 }
             }
@@ -45,3 +45,4 @@ pipeline {
         }
     }
 }
+
