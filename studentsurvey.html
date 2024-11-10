@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Survey Form</title>
+    <title>Updated Student Survey Form</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <style>
@@ -89,6 +89,14 @@
         .form-section {
             margin-bottom: 20px;
         }
+
+        #submissionMessage {
+            display: none;
+            color: #4CAF50;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 
     <script>
@@ -103,8 +111,8 @@
         // Handle form submission
         function submitForm(event) {
             event.preventDefault();
-            alert("Survey Submitted Successfully!");
             document.getElementById('surveyForm').reset();  // Reset form after submission
+            document.getElementById('submissionMessage').style.display = "block";
         }
     </script>
 </head>
@@ -112,7 +120,7 @@
 <body>
 
     <div class="container">
-        <h2>Student Survey Form</h2>
+        <h2>Updated Student Survey Form</h2>
         
         <form class="w3-container" id="surveyForm" onsubmit="submitForm(event);">
             
@@ -120,28 +128,28 @@
             <div class="form-section">
                 <h4 class="w3-text-green">Personal Information</h4>
                 <label for="first_name">First Name:</label>
-                <input class="w3-input w3-border" type="text" id="first_name" name="first_name" required>
+                <input class="w3-input w3-border" type="text" id="first_name" name="first_name" placeholder="John" required>
                 
                 <label for="last_name">Last Name:</label>
-                <input class="w3-input w3-border" type="text" id="last_name" name="last_name" required>
+                <input class="w3-input w3-border" type="text" id="last_name" name="last_name" placeholder="Doe" required>
                 
                 <label for="street_address">Street Address:</label>
-                <input class="w3-input w3-border" type="text" id="street_address" name="street_address" required>
+                <input class="w3-input w3-border" type="text" id="street_address" name="street_address" placeholder="1234 Elm St" required>
                 
                 <label for="city">City:</label>
-                <input class="w3-input w3-border" type="text" id="city" name="city" required>
+                <input class="w3-input w3-border" type="text" id="city" name="city" placeholder="Anytown" required>
                 
                 <label for="state">State:</label>
-                <input class="w3-input w3-border" type="text" id="state" name="state" required>
+                <input class="w3-input w3-border" type="text" id="state" name="state" placeholder="CA" required>
                 
                 <label for="zip">Zip:</label>
-                <input class="w3-input w3-border" type="text" id="zip" name="zip" required onkeypress="validateNumberInput(event)">
+                <input class="w3-input w3-border" type="text" id="zip" name="zip" placeholder="90210" required onkeypress="validateNumberInput(event)">
                 
                 <label for="phone">Telephone Number:</label>
-                <input class="w3-input w3-border" type="text" id="phone" name="phone" required onkeypress="validateNumberInput(event)">
+                <input class="w3-input w3-border" type="text" id="phone" name="phone" placeholder="123-456-7890" required onkeypress="validateNumberInput(event)">
                 
                 <label for="email">Email:</label>
-                <input class="w3-input w3-border" type="email" id="email" name="email" required>
+                <input class="w3-input w3-border" type="email" id="email" name="email" placeholder="john@example.com" required>
                 
                 <label for="date_of_survey">Date of Survey:</label>
                 <input class="w3-input w3-border" type="date" id="date_of_survey" name="date_of_survey" required>
@@ -182,13 +190,13 @@
             <div class="form-section">
                 <h4 class="w3-text-green">Raffle Entry</h4>
                 <label for="raffle">Enter at least ten comma-separated numbers (1-100):</label>
-                <input class="w3-input w3-border" type="text" id="raffle" name="raffle" required>
+                <input class="w3-input w3-border" type="text" id="raffle" name="raffle" placeholder="10, 20, 30, ..." required>
             </div>
             
             <!-- Additional Comments -->
             <div class="form-section">
                 <h4 class="w3-text-green">Additional Comments</h4>
-                <textarea class="w3-input w3-border" name="comments" rows="5"></textarea>
+                <textarea class="w3-input w3-border" name="comments" rows="5" placeholder="Any additional feedback..."></textarea>
             </div>
             
             <!-- Submit & Cancel Buttons -->
@@ -196,6 +204,9 @@
             <button class="reset-btn" type="reset">Cancel</button>
         
         </form>
+        
+        <!-- Submission Message -->
+        <p id="submissionMessage">Thank you for submitting the survey!</p>
     </div>
 
 </body>
