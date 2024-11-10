@@ -1,9 +1,27 @@
 pipeline {
     agent any
 
+    options {
+        // This will delete the workspace before each build, ensuring a clean environment
+        skipDefaultCheckout()  // Skip the default checkout since we're manually checking out the code
+    }
+
+    triggers {
+        // This enables the pipeline to be triggered automatically when changes are pushed to the repository
+        pollSCM('* * * * *')  // Adjust the polling frequency as necessary, e.g., every minute
+    }
+
     stages {
+        stage('Clean Workspace') {
+            steps {
+                // Delete workspace before build starts
+                cleanWs()
+            }
+        }
+
         stage('Checkout Code') {
             steps {
+                // Manually clone the repository as skipDefaultCheckout() is enabled
                 sh 'git clone https://github.com/vedansh-adepu/swe645.git'
                 sh 'cd swe645'
             }
