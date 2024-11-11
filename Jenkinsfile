@@ -6,11 +6,12 @@ pipeline {
     }
 
     triggers {
-        pollSCM('H/5 * * * *')
+        // Optionally add Poll SCM if the webhook doesn't trigger builds consistently
+        // pollSCM('H/5 * * * *')
     }
 
     environment {
-        IMAGE_TAG = "${env.BUILD_NUMBER}"  // Only the build number
+        IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
 
     stages {
@@ -22,7 +23,8 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                sh 'git clone https://github.com/vedansh-adepu/swe645.git'
+                // Uses Jenkins' SCM management to monitor and check out code
+                checkout scm
             }
         }
 
