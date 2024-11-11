@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: studentsurvey
-        image: vedanshadepu99/studentsurvey:latest
+        image: vedanshadepu99/studentsurvey:IMAGE_TAG
         ports:
         - containerPort: 80
