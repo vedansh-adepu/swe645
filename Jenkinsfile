@@ -20,11 +20,12 @@ pipeline {
             }
         }
 
-        stage('Checkout Code') {
-            steps {
-                sh 'git clone https://github.com/vedansh-adepu/swe645.git'
+    stage('Checkout Code') {
+        steps {
+            checkout scm
             }
         }
+
 
         stage('Build and Push Docker Image') {
             steps {
