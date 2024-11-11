@@ -6,7 +6,7 @@ pipeline {
     }
 
     triggers {
-        pollSCM('* * * * *') // Or you can remove this if you want only webhook-based triggers
+        pollSCM('* * * * *')
     }
 
     environment {
@@ -22,7 +22,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git url: 'https://github.com/vedansh-adepu/swe645.git', credentialsId: 'e0b50d84-9471-4900-9b5d-c6aa2c095f3b'
+                sh 'git clone https://github.com/vedansh-adepu/swe645.git'
             }
         }
 
@@ -48,4 +48,3 @@ pipeline {
         }
     }
 }
-
