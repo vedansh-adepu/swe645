@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_TAG = "studentsurvey:${env.BUILD_NUMBER}"  // Tag the image with the build number
+        IMAGE_TAG = "${env.BUILD_NUMBER}"  // Only the build number
     }
 
     stages {
