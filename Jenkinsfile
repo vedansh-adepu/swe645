@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_TAG = "studentsurvey:${env.BUILD_NUMBER}"
+        IMAGE_TAG = "studentsurvey:${env.BUILD_NUMBER}"  // Tag the image with the build number
     }
 
     stages {
@@ -38,8 +38,10 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                // Update the image tag in deployment file
-                sh "sed -i 's|vedanshadepu99/studentsurvey:.*|vedanshadepu99/${IMAGE_TAG}|g' swe645/studentsurvey-deployment.yaml"
+                // Replace IMAGE_TAG placeholder in the deployment file with the current build number
+                sh "sed -i 's|IMAGE_TAG|${IMAGE_TAG}|g' swe645/studentsurvey-deployment.yaml"
+                
+                // Apply the updated YAML file
                 sh "kubectl apply -f swe645/studentsurvey-deployment.yaml"
                 sh "kubectl apply -f swe645/studentsurvey-service.yaml"
             }
