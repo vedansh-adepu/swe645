@@ -7,7 +7,7 @@ pipeline {
 
     triggers {
         // Optionally add Poll SCM if the webhook doesn't trigger builds consistently
-        // pollSCM('H/5 * * * *')
+        pollSCM('H/5 * * * *')
     }
 
     environment {
