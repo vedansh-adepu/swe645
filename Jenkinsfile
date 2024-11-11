@@ -30,8 +30,8 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
-                    sh "docker build -t vedanshadepu99/${IMAGE_TAG} -f swe645/Dockerfile swe645"
-                    sh "docker push vedanshadepu99/${IMAGE_TAG}"
+                    sh "docker build -t vedanshadepu99/studentsurvey:${IMAGE_TAG} -f swe645/Dockerfile swe645"
+                    sh "docker push vedanshadepu99/studentsurvey:${IMAGE_TAG}"
                 }
             }
         }
